@@ -41,4 +41,19 @@ export class CategoryComponent implements OnInit {
 
 
   }
+  
+  getAllCategoryClass() {
+    if (!this.currentCategory) {
+      return "list-group-item "
+    } else {
+      return "list-group-item active"
+
+    }
+
+
+  }
+  emptyCurrentCategory(){
+    this.currentCategory={categoryId:0, categoryName:""};
+
+  }
 }

@@ -1,5 +1,7 @@
+
+ <li (click)="emptyCurrentCategory()" [class]="getAllCategoryClass()" routerLink="/products">Tüm Ürünler</li>
 <ul *ngFor="let cat of categories" class="list-group">
-    
+   
     <li [class]="getCurrentCategoryClass(cat)" (click)="setCurrentCategory(cat)" routerLink="products/category/{{cat.categoryId}}" class="list-group-item">{{cat.categoryName}}</li>
    
 </ul>
