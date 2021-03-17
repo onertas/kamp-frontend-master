@@ -9,7 +9,11 @@ import { CategoryComponent } from './components/category/category.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { WatAddedPipe } from './pipes/wat-added.pipe';
+import { FilterPipePipe } from './pipes/filter-pipe.pipe';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
 
+import {ToastrModule} from "ngx-toastr";
+import { CartSummaryComponent } from './components/cart-summary/cart-summary.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,13 +21,21 @@ import { WatAddedPipe } from './pipes/wat-added.pipe';
     CategoryComponent,
     NaviComponent,
     TodoComponent,
-    WatAddedPipe
+    WatAddedPipe,
+    FilterPipePipe,
+    CartSummaryComponent,
+   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot({
+
+      positionClass:"toast-bottom-right"
+    }),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

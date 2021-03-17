@@ -1,0 +1,11 @@
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Ürünler
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <li *ngFor="let cart of cartItems"><a  class="dropdown-item" href="#">{{cart.product.productName}} {{cart.quantity}}
+        <span (click)="removeFromCart(cart.product)" class="badge bg-info">sil</span></a></li>
+      <li>Sepetim</li>
+     
+    </ul>
+  </li>
