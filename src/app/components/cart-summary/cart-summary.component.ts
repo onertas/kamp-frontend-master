@@ -10,19 +10,19 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./cart-summary.component.css']
 })
 export class CartSummaryComponent implements OnInit {
-cartItems:CartItem[]=[];
+  cartItems: CartItem[] = [];
 
-  constructor(private cartService:CartService,private toastrService:ToastrService) { }
+  constructor(private cartService: CartService, private toastrService: ToastrService) { }
 
   ngOnInit(): void {
-this.getCart();
+    this.getCart();
   }
-  getCart(){
-    this.cartItems=this.cartService.list();
+  getCart() {
+    this.cartItems = this.cartService.list();
   }
-  removeFromCart(product:Product){
-this.cartService.remoFromCart(product)
-this.toastrService.error("silindi",product.productName)
+  removeFromCart(product: Product) {
+    this.cartService.remoFromCart(product)
+    this.toastrService.error("silindi", product.productName)
 
   }
 }
