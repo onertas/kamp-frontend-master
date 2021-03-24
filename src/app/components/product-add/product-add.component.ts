@@ -26,28 +26,33 @@ createProductAddForm() {
   this.productAddForm = this.formBuilder.group({
 
 
-    productName: ["", Validators.required],
-    unitsInStock: ["", Validators.required],
-    unitPrice: ["", Validators.required],
-    categoryId: ["", Validators.required]
+    productName: ['', Validators.required],
+    unitsInStock: ['', Validators.required],
+    unitPrice: ['', Validators.required],
+    categoryId: ['', Validators.required]
 
   });
 
 }
 
-add(){
+
+ add(){
   if (this.productAddForm.valid) {
     const productModel = Object.assign({}, this.productAddForm.value);
-    this.productService.add(productModel).subscribe(data=>{
 
-      this.toestrService.success(data.message)
+    this.productService.add(productModel)
+
+    .subscribe (data => {
+
+      this.toestrService.success(data.message);
 
     },
-    responseError=>{
+    responseError => {
 
 
 if (responseError.error.Errors.length>0) {
-  for(let i=0;i<responseError.error.Errors.length;i++){
+  // tslint:disable-next-line: prefer-for-of
+  for (let i = 0 ; i < responseError.error.Errors.length; i++){
     this.toestrService.error(responseError.error.Errors[i].ErrorMessage);
 
   }
@@ -55,7 +60,7 @@ if (responseError.error.Errors.length>0) {
 }
     })
   } else {
-    this.toestrService.error("dsddsds");
+    this.toestrService.error('dsddsds');
   }
 
 

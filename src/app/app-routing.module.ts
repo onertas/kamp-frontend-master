@@ -1,3 +1,4 @@
+import { LoginComponent } from './components/login/login.component';
 import { ProductAddComponent } from './components/product-add/product-add.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -7,7 +8,8 @@ const routes: Routes = [
   {path:"",pathMatch:"full",component:ProductComponent},
   {path:"products",component:ProductComponent},
   {path:"products/category/:categoryId",component:ProductComponent},
-  {path:"products/add",component:ProductAddComponent}
+  {path:"products/add",component:ProductAddComponent},
+  {path:"login",component:LoginComponent}
 
 
 ];
