@@ -1,7 +1,9 @@
 <div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
   <span class="visually-hidden">Loading...</span>
 </div>
-<div class="mb-3">
+<div class="mb-3 mt-3">
+  <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success btn-sm">Ürün Ekle</button>
+  <br>
   <label for="filterText" class="form-label">Ürün Arama</label>
   <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="ürün ara">
 </div>
@@ -23,7 +25,7 @@
   <tbody>
   <tr *ngFor="let product of products | filterPipe:filterText">
     <td>{{ product.productId }}</td>
-    <td>{{ product.productName| uppercase }}</td>
+    <td>{{ product.productName| lowercase }}</td>
     <td>{{ product.categoryId }}</td>
     <td>{{ product.unitPrice }}</td>
     <td>{{ product.unitPrice | watAdded:10 | currency}}</td>
@@ -32,3 +34,43 @@
   </tr>
 </tbody>
 </table>
+
+
+
+<!-- Modal -->
+<div aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="productAddForm">
+          <div class="mb-3">
+            <label for="productName">Ürün Adı</label>
+            <input type="text" id="productName" formControlName="productName" class="form-control" placeholder="ürün adı"/>
+          </div>
+          <div class="mb-3">
+            <label for="categoryId">Category Adı</label>
+            <input type="number" id="categoryId" formControlName="categoryId" class="form-control" placeholder="kategori adı"/>
+          </div>
+          <div class="mb-3">
+            <label for="unitsInStock">Stok Adet</label>
+            <input type="number" id="unitsInStock" formControlName="unitsInStock" class="form-control" placeholder="stok"/>
+          </div>
+          <div class="mb-3">
+            <label for="unitPrice">Ürün Fiyat</label>
+            <input type="number" id="unitPrice" formControlName="unitPrice" class="form-control" placeholder="fiyat"/>
+          </div>
+                  </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" #closeModal class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" (click)="add()" class="btn btn-primary">Kaydet</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
